@@ -9,3 +9,11 @@ docker-local-build: docker-compose.override.yml
 
 docker-local-setup:
 	docker compose up
+
+lint-js:
+	docker compose run --rm --no-deps frontend npm run lint
+	docker compose run --rm --no-deps frontend npm run format
+
+lint-python:
+	docker compose run --rm --no-deps backend black .
+	docker compose run --rm --no-deps backend flake8 .

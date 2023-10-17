@@ -16,3 +16,37 @@ make docker-local-initial-setup
 
 #### 4. Visit the app
 * Visit http://localhost:80
+
+
+---
+# Tooling setup
+
+#### Linting and formatting
+We use `flake8` for linting and [black](https://github.com/psf/black]) for formatting.
+
+###### Installing Black
+```
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3 get-pip
+pip install black
+```
+
+
+# Common development commands
+
+#### Linting
+* Lint the front-end
+  * `make lint-js`
+
+* Lint the backend
+  * `make lint-python`
+
+#### Other
+* View logs from Backend
+  * `docker compose logs -f backend`
+
+* Compile requirements.txt
+  * `pip-compile requirements.in --output-file=requirements.txt`
+
+* Check Types
+  * `mypy --config-file=mypy.ini`
