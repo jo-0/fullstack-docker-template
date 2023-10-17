@@ -1,0 +1,26 @@
+services:
+  nginx:
+    container_name: nginx
+    build:
+      context: ./services
+      dockerfile: ./nginx/Dockerfile
+    depends_on:
+      - backend
+    # port allows the host machine to link to container
+    # pass 80 from host machine to 80 of the image filesystem
+    ports:
+      - 80:80
+
+  backend:
+    build:
+      context: ./services/backend
+      dockerfile: Dockerfile
+    restart: always
+    env_file:
+      - ./.env.prod
+    volumes:
+      - ./services/backend:/backend
+    #  expose port on the container, only to other containers
+    expose:
+      - 8010
+    command: ["uwsgi", "--ini", "/backend/uwsgi.ini"]

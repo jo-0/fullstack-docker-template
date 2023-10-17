@@ -1,0 +1,13 @@
+# Add the new package in this file and then run the below command. It will build requirements.txt
+# pip-compile --output-file=requirements.txt requirements.in
+
+# Flask-related dependencies
+Flask==2.3.3
+
+# Devops-related dependencies
+uWSGI==2.0.22
+
+# Unpinned dev dependencies
+pip-tools
+
+# Dev dependencies
